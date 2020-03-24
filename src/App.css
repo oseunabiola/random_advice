@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+2&display=swap');
+
+#root, html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+}
+.app {
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url('./images/city.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Baloo 2', cursive;
+}
+.card {
+    background-color: whitesmoke;
+    width: 40%;
+    height: auto;
+    padding: 2%;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 10px 25px 25px black;
+}
+.advice {
+    line-height: 1;
+}
+button {
+    border: 1px solid #BBB;
+    border-radius: 20px;
+    padding: 2% 4%;
+    margin-bottom: 5%;
+}
+button:hover {
+    background: linear-gradient(45deg, purple, blue);
+    border: 1px solid transparent;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 80%;
+    }
+}
