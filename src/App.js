@@ -15,7 +15,7 @@ export default class App extends React.Component{
     }
 
     fetchAdvice() {
-        const adviceURL = 'https://api.adviceslip.com/advic';
+        const adviceURL = 'https://api.adviceslip.com/advice';
         const adviceRes = async () => {
             const res = await fetch(adviceURL);
             if (!res.ok) {
