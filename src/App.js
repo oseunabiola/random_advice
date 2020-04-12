@@ -5,7 +5,7 @@ import './App.css';
 export default class App extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { advice: ''};
+        this.state = { advice: '', error: ''};
 
         this.fetchAdvice = this.fetchAdvice.bind(this);
     }
@@ -15,23 +15,30 @@ export default class App extends React.Component{
     }
 
     fetchAdvice() {
-        const adviceURL = 'https://api.adviceslip.com/advice';
-        fetch(adviceURL)
-        .then(res=>{
+        const adviceURL = 'https://api.adviceslip.com/advic';
+        const adviceRes = async () => {
+            const res = await fetch(adviceURL);
+            if (!res.ok) {
+                throw Error (res.statusText)
+            }
             return res.json();
-        })
+        };
+        
+        adviceRes()
         .then(res=>{
-            const advice = res.slip.advice;
-            this.setState({ advice });
-        })
-        .catch(err=>console.log(err));
+            this.setState({ advice: res.slip.advice });
+        }).catch(err=>{this.setState({ error: err });console.log('Error => ' + err)});
+        
     }
 
     render () {
         return (
             <div className='app'>
                 <div className='card'>
-                    <h1 className='advice'>{this.state.advice}</h1>
+                    <p className='advice'>
+                        {(this.state.error) ? `${this.state.error}` : `${this.state.advice}`}
+                    </p>
+                    
                     <button onClick={this.fetchAdvice}>Give me advice</button>
                 </div>
             </div>
